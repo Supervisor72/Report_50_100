@@ -17,12 +17,11 @@
       <option value="Pesaro">Pesaro</option>
     </select><br><br>
 
-    <label for="promo">Tipo Promo:</label><br>
-    <select id="promo" name="Tipo Promo" required>
-      <option value="">-- Seleziona --</option>
-      <option value="Promo 50">Promo 50</option>
-      <option value="Promo 100">Promo 100</option>
-    </select><br><br>
+    <label for="promo50">Numero Promo 50:</label><br>
+    <input type="number" id="promo50" name="Promo 50" value="0" min="0"><br><br>
+
+    <label for="promo100">Numero Promo 100:</label><br>
+    <input type="number" id="promo100" name="Promo 100" value="0" min="0"><br><br>
 
     <input type="submit" value="Invia">
   </form>
@@ -33,15 +32,16 @@
 
       const formData = new FormData();
       formData.append('Punto Vendita', document.getElementById('pv').value);
-      formData.append('Tipo Promo', document.getElementById('promo').value);
+      formData.append('Promo 50', document.getElementById('promo50').value);
+      formData.append('Promo 100', document.getElementById('promo100').value);
       formData.append('Data', new Date().toLocaleDateString("it-IT"));
 
-      fetch('https://script.google.com/macros/s/AKfycbz4Mf7CfrS0no_Pv6myiXCdBoQ34ktrVrUb-F4f33ubRvKqylyUhXa-1B1oD4lKiMhk/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbzkFw8Pbli9C5r_G9Lk_lSwJprvM-rfvUIbnHPMS_p8HcQcQgMdULDmWEr5zDBku13W/exec', {
         method: 'POST',
         body: formData
       })
       .then(response => alert('Promo inviata con successo!'))
-      .catch(error => alert('Errore nell\'invio: ' + error));
+      .catch(error => alert('Errore nell'invio: ' + error));
     });
   </script>
 </body>
