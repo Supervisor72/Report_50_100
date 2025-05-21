@@ -36,8 +36,8 @@
       formData.append('Promo 100', document.getElementById('promo100').value);
       formData.append('Data', new Date().toLocaleDateString("it-IT"));
 
-      fetch('https://script.google.com/macros/s/AKfycbxYU7SZ972NTIA4WN0PqF2CGEmiih3N9ULdSKogHtP_-X-IgrA896dCUlsTknR1FqJV/exec', {
-        method: 'POST',
+   fetch('https://script.google.com/macros/s/AKfycbxkglPdrRfJXx2DhZloMaPuyeqQ7KvYYdKcfzj0mQOfmBWIdGUmycWakV5c-mBKV-26/exec', {
+     method: 'POST',
         body: formData
       })
       .then(response => alert('Promo inviata con successo!'))
