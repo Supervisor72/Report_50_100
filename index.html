@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invio Promo Giornaliera</title>
+</head>
+<body>
+  <h2>Inserisci Promo Giornaliera</h2>
+  <form id="promoForm">
+    <label for="pv">Punto Vendita:</label><br>
+    <select id="pv" name="Punto Vendita" required>
+      <option value="">-- Seleziona --</option>
+      <option value="Fano">Fano</option>
+      <option value="Monsano">Monsano</option>
+      <option value="Osimo">Osimo</option>
+      <option value="Macerata">Macerata</option>
+      <option value="Civitanova">Civitanova</option>
+      <option value="Pesaro">Pesaro</option>
+    </select><br><br>
+
+    <label for="promo">Tipo Promo:</label><br>
+    <select id="promo" name="Tipo Promo" required>
+      <option value="">-- Seleziona --</option>
+      <option value="Promo 50">Promo 50</option>
+      <option value="Promo 100">Promo 100</option>
+    </select><br><br>
+
+    <input type="submit" value="Invia">
+  </form>
+
+  <script>
+    document.getElementById('promoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append('Punto Vendita', document.getElementById('pv').value);
+      formData.append('Tipo Promo', document.getElementById('promo').value);
+      formData.append('Data', new Date().toLocaleDateString("it-IT"));
+
+      fetch('https://script.google.com/macros/s/AKfycbz4Mf7CfrS0no_Pv6myiXCdBoQ34ktrVrUb-F4f33ubRvKqylyUhXa-1B1oD4lKiMhk/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => alert('Promo inviata con successo!'))
+      .catch(error => alert('Errore nell\'invio: ' + error));
+    });
+  </script>
+</body>
+</html>
